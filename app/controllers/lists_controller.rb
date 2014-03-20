@@ -1,4 +1,6 @@
 class ListsController < ApplicationController
+  respond_to :html, :js
+
   def show
     @list = List.find(params[:id])
   end

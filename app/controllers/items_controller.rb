@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  respond_to :html, :js
+
   def show
     @list = List.find(params[:list_id])
     @item = Item.find(params[:id])
@@ -7,7 +9,6 @@ class ItemsController < ApplicationController
   def new
     @list = List.find(params[:list_id])
     @item = Item.new
-    authorize @item
   end
 
   def create
@@ -22,6 +23,10 @@ class ItemsController < ApplicationController
       flash[:error] = "There was an error saving your item."
       render :new
     end
+
+    # respond_with(@item) do |f|
+    #   f.html { redirect_to [@list, @item]}
+    # end
   end
 
   def edit

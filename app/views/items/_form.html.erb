@@ -1,0 +1,24 @@
+<%= form_for [@list, @item], html: {class: 'form-horizontal'} do |f| %>
+
+    <div class="control-group">
+      <div class="controls">
+        Description
+        <%= f.text_field :description %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="controls">
+        <%= f.label :complete, class: 'checkbox' do %>
+            <%= f.check_box :complete %> Complete
+        <% end %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="controls">
+        <%= f.submit "Add Item", class: 'btn' %>
+      </div>
+    </div>
+
+<% end %>

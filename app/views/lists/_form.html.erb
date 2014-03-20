@@ -1,0 +1,16 @@
+<%= form_for @list, html: {class: 'form-horizontal'} do |f| %>
+
+    <label>Title</label>
+    <div class="control-group">
+      <div class="controls">
+        <p><%= f.text_field :title %></p>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="controls">
+        <%= f.submit "Add List", class: 'btn' %>
+      </div>
+    </div>
+
+<% end %>
