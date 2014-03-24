@@ -52,6 +52,10 @@ class ItemsController < ApplicationController
       flash[:error] = "There was an error deleting the item."
       render :show
     end
+
+    respond_with(@item) do |f|
+      f.html { redirect_to [@list, @item]}
+    end
   end
 
   def destroy_multiple
