@@ -45,16 +45,23 @@ class ItemsController < ApplicationController
   def destroy
     @list = List.find(params[:list_id])
     @item = Item.find(params[:id])
-    authorize @post
+    authorize @item
     if @item.destroy
-      flash[:notice] = "7 days are up! Item was deleted."
+      flash[:notice] = "Item was deleted."
     else
       flash[:error] = "There was an error deleting the item."
       render :show
     end
   end
 
+  def destroy_multiple
+    @items = Item.find(params[:id])
+    @items.each do |item|
+      item.destroy
+    end
+  end
+
   def item_params
-    params.require(:item).permit(:description, :days, :complete, :list_id)
+    params.require(:item).permit(:description, :days, :completed, :list_id)
   end
 end

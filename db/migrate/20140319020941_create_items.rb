@@ -3,7 +3,8 @@ class CreateItems < ActiveRecord::Migration
     create_table :items do |t|
       t.string :description
       t.integer :days
-      t.boolean :complete
+      t.boolean :completed
+      t.boolean :deleted
 
       t.timestamps
     end

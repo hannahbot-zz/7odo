@@ -3,18 +3,15 @@
   <tr>
     <td>Description</td>
     <td>Days Left</td>
-    <td>Complete</td>
+    <td>Completed</td>
   </tr>
   <% @items.each do |item| %>
     <tr>
       <td><%= item.description %></td>
-      <td></td>
-      <td></td>
+      <td><%= item.created_at %></td>
+
+      <td><%= check_box_tag "completed[item_ids]", item.id %></td>
     </tr>
   <% end %>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
 </table>
+<%= link_to "New Todo Item", new_list_item_path(@list, @item), class: 'btn btn-large' %>
