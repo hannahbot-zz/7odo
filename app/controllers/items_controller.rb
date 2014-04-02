@@ -59,10 +59,19 @@ class ItemsController < ApplicationController
   end
 
   def destroy_multiple
-    @items = Item.find(params[:id])
-    @items.each do |item|
-      item.destroy
-    end
+    #params
+    #Item.where
+    #array of ids to match on
+
+
+
+    @list = List.find(params[:list_id])
+    @items = Item.where(id: params[:completed][:item_ids])
+
+      @items.each do |item|
+        item.destroy
+      end
+      redirect_to @list
   end
 
   def item_params

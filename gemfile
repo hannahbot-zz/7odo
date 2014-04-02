@@ -1,5 +1,14 @@
 source 'https://rubygems.org'
 
+# Rails API
+gem 'rails-api'
+
+# Rest-Client
+gem 'rest-client'
+
+# Active Model Serializers
+gem 'active_model_serializers'
+
 # Whenever/Cron
 gem 'whenever', :require => false
 

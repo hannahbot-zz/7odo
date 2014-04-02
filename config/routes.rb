@@ -10,6 +10,14 @@ Todo::Application.routes.draw do
     end
   end
 
+  namespace :api, :defaults => {:format => :json} do
+    namespace :v1 do
+      resources :users
+      resources :lists
+      resources :items
+    end
+  end
+
   root to: 'welcome#index'
 
 end

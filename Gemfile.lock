@@ -10,6 +10,8 @@ GEM
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
+    active_model_serializers (0.8.1)
+      activemodel (>= 3.0)
     activemodel (4.0.3)
       activesupport (= 4.0.3)
       builder (~> 3.1.0)
@@ -93,6 +95,9 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.0.3)
       sprockets-rails (~> 2.0.0)
+    rails-api (0.2.0)
+      actionpack (>= 3.2.11)
+      railties (>= 3.2.11)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
@@ -106,6 +111,8 @@ GEM
     rake (10.1.1)
     rdoc (4.1.1)
       json (~> 1.4)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rspec-collection_matchers (0.0.3)
       rspec-expectations (>= 2.99.0.beta1)
     rspec-core (3.0.0.beta2)
@@ -168,6 +175,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
   bootstrap-sass (~> 2.3.1.0)
   coffee-rails (~> 4.0.0)
   database_cleaner
@@ -179,7 +187,9 @@ DEPENDENCIES
   pg
   pry
   rails (= 4.0.3)
+  rails-api
   rails_12factor
+  rest-client
   rspec-rails (~> 3.0.0.beta)
   sass-rails (~> 4.0.0)
   sdoc

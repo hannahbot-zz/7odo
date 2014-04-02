@@ -5,13 +5,16 @@
     <td>Days Left</td>
     <td>Completed</td>
   </tr>
+<%= form_tag destroy_multiple_list_items_path(@list, @item), method: :delete do %>
   <% @items.each do |item| %>
     <tr>
       <td><%= item.description %></td>
       <td><%= distance_of_time_in_words(7.days.ago - item.created_at) %></td>
-
-      <td><%= check_box_tag "completed[item_ids]", item.id %></td>
+      <td><%= check_box_tag "completed[item_ids][]", item.id %></td>
     </tr>
   <% end %>
 </table>
+<%= submit_tag "Mark as Complete" %>
+<% end %>
+
 <%= link_to "New Todo Item", new_list_item_path(@list, @item), class: 'btn btn-large' %>
