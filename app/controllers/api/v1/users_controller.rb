@@ -1,7 +1,5 @@
 class API::V1::UsersController < ApplicationController
-#   http://api.rubyonrails.org/classes/ActionController/HttpAuthentication/Basic.html
-  #http_basic_authenticate_with name: "user", password: "password"
-  skip_before_action :verify_authenticity_token
+
   respond_to :html, :json
 
   def index

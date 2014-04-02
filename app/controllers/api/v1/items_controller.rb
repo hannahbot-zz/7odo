@@ -1,6 +1,5 @@
 class API::V1::ItemsController < ApplicationController
 
-  skip_before_action :verify_authenticity_token
   respond_to :html, :js, :json
 
   def index
@@ -11,7 +10,6 @@ class API::V1::ItemsController < ApplicationController
   end
 
   def show
-    @list = List.find(params[:list_id])
     @item = Item.find(params[:id])
     respond_to do |format|
       format.json { render :json => @item }
@@ -19,7 +17,6 @@ class API::V1::ItemsController < ApplicationController
   end
 
   def create
-    @list = List.find(params[:list_id])
     @item = Item.new(item_params)
     @item.list = @list
     respond_to do |format|
@@ -29,15 +26,11 @@ class API::V1::ItemsController < ApplicationController
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
-    # respond_with(@item) do |f|
-    #   f.html { redirect_to [@list, @item]}
-    # end
+
   end
 
   def update
-    @list = List.find(params[:list_id])
     @item = Item.find(params[:id])
-    authorize @post
     respond_to do |format|
       if @item.update_attributes(item_params)
         format.json { head :no_content, status: :ok }
@@ -48,7 +41,6 @@ class API::V1::ItemsController < ApplicationController
   end
 
   def destroy
-    @list = List.find(params[:list_id])
     @item = Item.find(params[:id])
     respond_to do |format|
       if @item.destroy

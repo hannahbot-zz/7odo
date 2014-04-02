@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Authentication
+gem 'pundit'
+
 # Rails API
 gem 'rails-api'
 

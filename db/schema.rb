@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20140324192515) do
     t.string   "description"
     t.integer  "days"
     t.boolean  "completed"
+    t.boolean  "deleted"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "list_id"
@@ -30,6 +31,8 @@ ActiveRecord::Schema.define(version: 20140324192515) do
 
   create_table "lists", force: true do |t|
     t.string   "title"
+    t.boolean  "viewable"
+    t.boolean  "open"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"

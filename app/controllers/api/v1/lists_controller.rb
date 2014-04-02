@@ -1,6 +1,5 @@
 class API::V1::ListsController < ApplicationController
 
-  skip_before_action :verify_authenticity_token
   respond_to :html, :js, :json
 
   def index
@@ -13,6 +12,7 @@ class API::V1::ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @items = @list.items
+    authorize @i
     respond_to do |format|
       format.json { render :json => @list }
     end
@@ -30,7 +30,7 @@ class API::V1::ListsController < ApplicationController
   end
 
   def update
-    @list = List.find(params[:id])
+    @list = policy_scope(List.find(params[:id]))
     respond_to do |format|
       if @list.update_attributes(list_params)
         format.json { head :no_content, status: :ok }
@@ -41,6 +41,7 @@ class API::V1::ListsController < ApplicationController
   end
 
   def destroy
+    @list = List.find(params[:id])
     respond_to do |format|
       if @list.destroy
         format.json { head :no_content, status: :ok }
@@ -52,7 +53,7 @@ class API::V1::ListsController < ApplicationController
 
   private
     def list_params
-      params.require(:list).permit(:title)
+      params.require(:list).permit(:title, :viewable, :open)
     end
 
 end
